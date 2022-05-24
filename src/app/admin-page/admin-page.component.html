@@ -4,6 +4,7 @@
         <div class="mb-3">
             <h1 class="h3 d-inline align-middle">Pricing API Configurator</h1>
         </div>
+        <form [formGroup]="apiConfigForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-12 col-lg-6">
                 <div class="card">
@@ -13,10 +14,10 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-8">
-                                <input type="text" class="form-control" placeholder="API Endpoint URL">
+                                <input formControlName="endpointURL" type="text" class="form-control" placeholder="API Endpoint URL">
                             </div>
                             <div class="col-4">
-                                <select class="form-select mb-3">
+                                <select class="form-select mb-3" formControlName="endpointMethod">
                                     <option selected>GET</option>
                                     <option>POST</option>
                                 </select>
@@ -31,19 +32,19 @@
                     <div class="card-body">									
                         <div class="row">								
                             <div class="col-6">
-                                <select class="form-select mb-3">
+                                <select class="form-select mb-3" formControlName="headerParam1">
                                     <option selected>X-API-Host</option>
                                     <option>X-API-Key</option>
                                 </select>
-                                <select class="form-select mb-3">
+                                <select class="form-select mb-3" formControlName="headerParam2">
                                     <option selected>X-API-Key</option>
                                     <option>X-API-Host</option>
                                 </select>
                                 
                             </div>
                             <div class="col-6">
-                                <div class="mb-3"><input type="text" class="form-control" placeholder="">	</div>
-                                <div><input type="text" class="form-control" placeholder=""></div>
+                                <div class="mb-3"><input formControlName="headerParam1Value" type="text" class="form-control" placeholder="">	</div>
+                                <div><input formControlName="headerParam2Value" type="text" class="form-control" placeholder=""></div>
                             </div>								
                         </div>									
                     </div>
@@ -55,13 +56,13 @@
                     <div class="card-body">									
                         <div class="row">								
                             <div class="col-6">
-                                <select class="form-select mb-3">
+                                <select class="form-select mb-3" formControlName="reqParam">
                                     <option selected>symbol</option>
                                     <option>region</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div class="mb-3"><input type="text" class="form-control" placeholder="">	</div>
+                                <div class="mb-3"><input formControlName="reqParamValue" type="text" class="form-control" placeholder="">	</div>
                             </div>								
                         </div>									
                     </div>
@@ -74,13 +75,13 @@
                     <div class="card-body">									
                         <div class="row">								
                             <div class="col-6">
-                                <select class="form-select mb-3">
+                                <select formControlName="optionalParam" class="form-select mb-3">
                                     <option selected>region</option>
                                     <option>date</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                                <div class="mb-3"><input type="text" class="form-control" placeholder="">	</div>
+                                <div class="mb-3"><input formControlName="optionalParamValue" type="text" class="form-control" placeholder="">	</div>
                             </div>								
                         </div>									
                     </div>
@@ -93,19 +94,19 @@
                         <h5 class="card-title mb-0">Configured Endpoint(s):</h5>
                     </div>
                     <div class="card-body">
-                        <div class="mt-3">
+                        <div class="mt-3 endpointDetails">
                             <ul>
-                                <li> GET <a href="">https://yh-finance.p.rapidapi.com/auto-complete?q=tesla&region=US</a></li>
-                                <li>GET <a href="">https://yh-finance.p.rapidapi.com/auto-complete?q=msft&region=US</a></li>
+                                <li>{{configuredendpoints}}</li>
                             </ul>
                         </div>
                         <div class="text-center mt-3">
-                            <a (click)='saveConfigHandler()' class="btn btn-lg btn-primary">Save Config</a>
+                            <button type="submit" class="btn btn-lg btn-primary">Save Config</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>        
+        </form>
 
     </div>
 </main>
