@@ -15,7 +15,7 @@ export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
       //clientId: 'a9bf3b96-929a-4059-9b0b-71c2f60f0466',
-      clientId: 'cecbcd27-f47e-46fc-8518-2ef4a293de27',
+      clientId: '52c91d93-6be7-4553-9a66-a88099874f24',
       redirectUri: 'https://earnest-gnome-231e1a.netlify.app/',
       postLogoutRedirectUri: 'https://earnest-gnome-231e1a.netlify.app/'
     }
