@@ -31,7 +31,7 @@ export class AdminPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = this.getName();
-    this.endpointconfigService.fetchEndpoints().then(res => {this.configuredendpoints = res[0].data.url});
+    this.endpointconfigService.fetchEndpoints().then(res => {this.configuredendpoints = res[res.length-1].data.url});
     console.warn("configuredendpoints"+this.configuredendpoints)
   }
 

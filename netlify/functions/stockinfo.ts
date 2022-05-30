@@ -31,8 +31,8 @@ const handler: Handler = async (event, context) => {
         },
       )
     )
-
-    return await clientDB.query(
+    
+    return clientDB.query(
       q.Map(
       q.Paginate(
           q.Documents(q.Collection('StockInfo'))

@@ -26,11 +26,9 @@ export class AnalystPageComponent implements OnInit {
   ngOnInit(): void {
     //setInterval(()=> { this.stockinfo.getStockinfo().subscribe((x : any) => { console.log('Func executed subs'+JSON.stringify(x[0].data.quotes));this.customers = x[0].data.quotes}); }, 3000);
     //this.stockinfo.getStockinfo().subscribe((x : any) => { console.log('subs'+JSON.stringify(x[0].data.quotes));this.customers = x[0].data.quotes});
-    this.endpointconfigService.fetchEndpoints().then(res => {this.endpointurl = res[0].data.url;
-      this.stockinfo.getStockinfo(encodeURIComponent(this.endpointurl)).then( res => {console.log("csl"+res);this.customers = res[0].data.quotes} );
-
-    
-    });
+    setInterval(()=> { this.endpointconfigService.fetchEndpoints().then(res => {this.endpointurl = res[res.length-1].data.url;
+      this.stockinfo.getStockinfo(encodeURIComponent(this.endpointurl)).then( r => {console.log("csl"+res);this.customers = r[r.length-1].data.quotes} );
+    })},3000)
   }
   onExporting(e: { component: any; cancel: boolean; }) {
     const workbook = new Workbook();
